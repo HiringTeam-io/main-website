@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VP of Engineering — H2 Corporation</title>
+<style>
+  :root{
+    --navy:#0B1220;
+    --navy-soft:#1B2436;
+    --teal:#14B8A6;
+    --teal-deep:#0D9488;
+    --ink:#111827;
+    --muted:#5B6472;
+    --line:#E7EAEE;
+    --paper:#FFFFFF;
+    --panel:#F5F7F9;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 28px;}
+  .tri{position:absolute;width:0;height:0;opacity:.08;pointer-events:none;}
+
+  /* NAV */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(11,18,32,.96);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .nav-inner{
+    max-width:960px;margin:0 auto;padding:16px 28px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .brand{display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;letter-spacing:.02em;font-size:15px;}
+  .brand svg{display:block;}
+  .tag-pill{
+    font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--teal);border:1px solid rgba(20,184,166,.4);
+    padding:5px 10px;border-radius:999px;font-weight:600;
+  }
+  .nav-cta{
+    background:var(--teal);color:#04231F;font-weight:700;font-size:13px;
+    padding:9px 18px;border-radius:999px;text-decoration:none;
+    letter-spacing:.02em;
+  }
+
+  /* HERO */
+  .hero{
+    background:linear-gradient(180deg,var(--navy) 0%, var(--navy-soft) 100%);
+    color:#fff;position:relative;overflow:hidden;
+    padding:72px 0 88px;
+  }
+  .hero .wrap{position:relative;z-index:2;}
+  .hero-eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:#8FF0E4;font-weight:700;margin-bottom:22px;
+  }
+  .hero-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--teal);}
+  h1.role{
+    font-size:44px;font-weight:800;line-height:1.12;letter-spacing:-.01em;
+    margin:0 0 18px;max-width:640px;
+  }
+  .hero-sub{
+    font-size:17px;color:#B7C0CE;max-width:560px;margin:0 0 30px;
+  }
+  .meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px;}
+  .chip{
+    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+    padding:8px 14px;border-radius:999px;font-size:13.5px;color:#EAF0F5;
+    display:flex;align-items:center;gap:7px;
+  }
+  .chip svg{opacity:.8;flex-shrink:0;}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+  .btn-primary{
+    background:var(--teal);color:#04231F;font-weight:700;font-size:15px;
+    padding:14px 26px;border-radius:10px;text-decoration:none;
+    box-shadow:0 8px 24px rgba(20,184,166,.25);
+  }
+  .btn-ghost{
+    color:#fff;font-weight:600;font-size:14.5px;text-decoration:none;
+    display:flex;align-items:center;gap:6px;opacity:.85;
+  }
+  .hero-tri-a{border-left:220px solid transparent;border-bottom:260px solid rgba(20,184,166,.10);top:-40px;right:-60px;}
+  .hero-tri-b{border-left:140px solid transparent;border-bottom:170px solid rgba(255,255,255,.06);bottom:-30px;right:120px;}
+
+  /* SECTION SHELL */
+  section{padding:64px 0;}
+  section.alt{background:var(--panel);}
+  .eyebrow{
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--teal-deep);font-weight:700;margin:0 0 12px;
+  }
+  h2{font-size:28px;font-weight:800;letter-spacing:-.01em;margin:0 0 16px;color:var(--navy);}
+  p.lead{font-size:16.5px;color:var(--muted);max-width:680px;margin:0 0 28px;}
+
+  /* ABOUT / STATS */
+  .stat-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px;
+  }
+  .stat{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px 18px;text-align:left;
+  }
+  .stat .num{font-size:24px;font-weight:800;color:var(--navy);}
+  .stat .label{font-size:12.5px;color:var(--muted);margin-top:4px;letter-spacing:.01em;}
+  .investors{margin-top:26px;font-size:13.5px;color:var(--muted);}
+  .investors b{color:var(--ink);font-weight:600;}
+
+  /* CARD LISTS */
+  .card-list{display:grid;gap:12px;margin-top:26px;}
+  .item-card{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px 20px;display:flex;gap:14px;align-items:flex-start;
+  }
+  section.alt .item-card{background:#fff;}
+  .item-card .mark{
+    flex-shrink:0;width:26px;height:26px;border-radius:8px;
+    background:rgba(20,184,166,.12);color:var(--teal-deep);
+    display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;
+    margin-top:1px;
+  }
+  .item-card p{margin:0;font-size:15px;color:var(--ink);}
+
+  /* TWO COLUMN REQS */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px;}
+  .req-panel{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:24px;
+  }
+  section.alt .req-panel{background:#fff;}
+  .req-panel h3{
+    font-size:14px;text-transform:uppercase;letter-spacing:.08em;
+    margin:0 0 16px;color:var(--navy);display:flex;align-items:center;gap:8px;
+  }
+  .req-panel h3 .tick{color:var(--teal-deep);}
+  .req-panel ul{margin:0;padding:0;list-style:none;}
+  .req-panel li{
+    font-size:14.5px;color:var(--ink);padding:10px 0;border-top:1px solid var(--line);
+  }
+  .req-panel li:first-child{border-top:none;padding-top:0;}
+
+  /* COMP STRIP */
+  .comp-strip{
+    background:var(--navy);color:#fff;border-radius:20px;padding:40px 36px;
+    margin-top:8px;position:relative;overflow:hidden;
+  }
+  .comp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative;z-index:2;}
+  .comp-grid .comp-item .num{font-size:22px;font-weight:800;color:var(--teal);}
+  .comp-grid .comp-item .label{font-size:13px;color:#C6CEDA;margin-top:6px;}
+
+  /* FINAL CTA */
+  .final-cta{
+    text-align:center;padding:80px 0;
+  }
+  .final-cta h2{font-size:32px;}
+  .final-cta p.lead{margin-left:auto;margin-right:auto;}
+
+  footer{
+    border-top:1px solid var(--line);padding:32px 0;background:var(--panel);
+  }
+  .foot-inner{
+    max-width:960px;margin:0 auto;padding:0 28px;
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+  }
+  .foot-brand{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--navy);font-size:14px;}
+  .foot-links{display:flex;gap:20px;font-size:13.5px;color:var(--muted);}
+  .foot-links a{text-decoration:none;color:var(--muted);}
+  .foot-links a:hover{color:var(--navy);}
+
+  @media (max-width:720px){
+    h1.role{font-size:32px;}
+    .stat-grid{grid-template-columns:repeat(2,1fr);}
+    .two-col{grid-template-columns:1fr;}
+    .comp-grid{grid-template-columns:repeat(2,1fr);}
+    section{padding:48px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <svg width="20" height="20" viewBox="0 0 20 20"><polygon points="10,1 19,18 1,18" fill="#14B8A6"/></svg>
+      H2 CORPORATION
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;">
+      <span class="tag-pill">Careers</span>
+      <a class="nav-cta" href="#apply">Apply Now</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="tri hero-tri-a"></span>
+  <span class="tri hero-tri-b"></span>
+  <div class="wrap">
+    <div class="hero-eyebrow"><span class="dot"></span>Engineering Leadership · Full-time</div>
+    <h1 class="role">VP of Engineering</h1>
+    <p class="hero-sub">Lead and scale H2's US engineering organization, building AI-native systems for the $13 trillion construction industry — from the ground up, alongside our CTO, CEO, and Product teams.</p>
+    <div class="meta-row">
+      <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8FF0E4" stroke-width="2"><path d="M12 21s-7-6.4-7-12a7 7 0 0 1 14 0c0 5.6-7 12-7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>San Francisco</span>
+      <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8FF0E4" stroke-width="2"><path d="M12 21s-7-6.4-7-12a7 7 0 0 1 14 0c0 5.6-7 12-7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>New York City</span>
+      <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8FF0E4" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>$250K–$300K</span>
+      <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8FF0E4" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Unlimited PTO</span>
+    </div>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#apply">Apply for this role →</a>
+      <a class="btn-ghost" href="#role">See the full role ↓</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">About H2 Corporation</p>
+    <h2>Modernizing a $13 trillion industry that AI forgot.</h2>
+    <p class="lead">Founded in Tokyo in 2020, H2 Corporation builds AI-powered systems for construction — one of the largest and most underserved industries in the world. Our tools turn blueprints, field surveys, and project data into automated, human-centered workflows for general contractors and subcontractors.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="num">2020</div><div class="label">Founded in Tokyo</div></div>
+      <div class="stat"><div class="num">5</div><div class="label">Global offices</div></div>
+      <div class="stat"><div class="num">120+</div><div class="label">Employees worldwide</div></div>
+      <div class="stat"><div class="num">$13T</div><div class="label">Construction market</div></div>
+    </div>
+    <div class="investors">Backed by <b>NEA</b>, <b>JAFCO</b>, and <b>Spiral Capital</b>.</div>
+  </div>
+</section>
+
+<section class="alt" id="role">
+  <div class="wrap">
+    <p class="eyebrow">The Role</p>
+    <h2>Build the US engineering org from the ground up.</h2>
+    <p class="lead">This is a foundational leadership role, not a maintenance one. You'll work directly with H2's CTO, CEO, and Product leadership to set team culture, technical standards, and cross-border collaboration between our US, Japan, and Vietnam teams.</p>
+    <div class="card-list">
+      <div class="item-card"><div class="mark">1</div><p>Lead execution on web, AI, and platform initiatives for the US engineering team.</p></div>
+      <div class="item-card"><div class="mark">2</div><p>Translate customer pain points into scalable technical solutions alongside Product and Design.</p></div>
+      <div class="item-card"><div class="mark">3</div><p>Shape technical strategy and hiring standards with the CTO and global engineering leadership.</p></div>
+      <div class="item-card"><div class="mark">4</div><p>Lead architectural decisions for web applications, AI workflows, enterprise integrations, and data models.</p></div>
+      <div class="item-card"><div class="mark">5</div><p>Hire and develop US engineering staff, particularly L3–L4-caliber engineers.</p></div>
+      <div class="item-card"><div class="mark">6</div><p>Establish development processes that balance speed, quality, and reliability.</p></div>
+      <div class="item-card"><div class="mark">7</div><p>Build collaboration models across US, Japan, and Vietnam teams with async workflows.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">What We're Looking For</p>
+    <h2>Required &amp; preferred experience.</h2>
+    <div class="two-col">
+      <div class="req-panel">
+        <h3><span class="tick">●</span> Required</h3>
+        <ul>
+          <li>15+ years of product engineering experience across web, platform, AI, infrastructure, or enterprise software.</li>
+          <li>10+ years of engineering leadership, including hiring, managing, coaching, and scaling teams.</li>
+          <li>Demonstrated experience building or scaling AI-enabled products.</li>
+          <li>Technical credibility with hands-on leadership capability.</li>
+          <li>Strong cross-functional leadership across Product, Design, GTM, and executive stakeholders.</li>
+          <li>Comfort operating in ambiguity, deciding with incomplete information.</li>
+        </ul>
+      </div>
+      <div class="req-panel">
+        <h3><span class="tick">●</span> Preferred</h3>
+        <ul>
+          <li>Computer vision, image recognition, or construction-drawing/takeoff experience.</li>
+          <li>Background in construction tech, industrial software, robotics, or vertical SaaS.</li>
+          <li>Full-stack expertise across frontend, backend, data, and platform systems.</li>
+          <li>Experience across Japan–US, APAC–US, or other multinational engineering teams.</li>
+          <li>Prior experience scaling engineering at an early-stage or high-growth startup.</li>
+          <li>Building products for complex, non-technical, or field-based users.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <p class="eyebrow">Compensation &amp; Benefits</p>
+    <h2>What you'll get.</h2>
+    <div class="comp-strip">
+      <span class="tri" style="border-left:160px solid transparent;border-bottom:190px solid rgba(20,184,166,.12);top:-30px;right:-40px;"></span>
+      <div class="comp-grid">
+        <div class="comp-item"><div class="num">$250K–$300K</div><div class="label">Base salary</div></div>
+        <div class="comp-item"><div class="num">Unlimited</div><div class="label">Paid time off</div></div>
+        <div class="comp-item"><div class="num">Full</div><div class="label">Health benefits</div></div>
+        <div class="comp-item"><div class="num">Flexible</div><div class="label">Working hours</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta" id="apply">
+  <div class="wrap">
+    <p class="eyebrow" style="text-align:center;">Ready to build?</p>
+    <h2>Lead engineering at H2 Corporation.</h2>
+    <p class="lead">If you're energized by ambiguity, foundational ownership, and applying AI to a massive, overlooked industry, we'd like to talk.</p>
+    <a class="btn-primary" href="mailto:careers@h2corporation.co.jp?subject=VP%20of%20Engineering%20Application" style="display:inline-block;">Apply for this role →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <svg width="16" height="16" viewBox="0 0 20 20"><polygon points="10,1 19,18 1,18" fill="#0D9488"/></svg>
+      H2 Corporation
+    </div>
+    <div class="foot-links">
+      <a href="https://h2corporation.co.jp/" target="_blank" rel="noopener">h2corporation.co.jp</a>
+      <a href="https://www.linkedin.com/company/h2-corporation" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

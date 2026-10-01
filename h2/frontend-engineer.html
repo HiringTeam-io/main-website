@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frontend Engineer | Frontend Forward Deployment Engineer — H2 Corporation</title>
+<style>
+  :root{
+    --navy:#0B1220;
+    --navy-soft:#1B2436;
+    --teal:#14B8A6;
+    --teal-deep:#0D9488;
+    --ink:#111827;
+    --muted:#5B6472;
+    --line:#E7EAEE;
+    --paper:#FFFFFF;
+    --panel:#F5F7F9;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 28px;}
+  .tri{position:absolute;width:0;height:0;opacity:.08;pointer-events:none;}
+
+  /* NAV */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(11,18,32,.96);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .nav-inner{
+    max-width:960px;margin:0 auto;padding:16px 28px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .brand{display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;letter-spacing:.02em;font-size:15px;}
+  .brand svg{display:block;}
+  .tag-pill{
+    font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--teal);border:1px solid rgba(20,184,166,.4);
+    padding:5px 10px;border-radius:999px;font-weight:600;
+  }
+  .nav-cta{
+    background:var(--teal);color:#04231F;font-weight:700;font-size:13px;
+    padding:9px 18px;border-radius:999px;text-decoration:none;
+    letter-spacing:.02em;
+  }
+
+  /* HERO */
+  .hero{
+    background:linear-gradient(180deg,var(--navy) 0%, var(--navy-soft) 100%);
+    color:#fff;position:relative;overflow:hidden;
+    padding:56px 0 52px;
+  }
+  .hero .wrap{position:relative;z-index:2;}
+  .hero-eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:#8FF0E4;font-weight:700;margin-bottom:22px;
+  }
+  .hero-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--teal);}
+  h1.role{
+    font-size:44px;font-weight:800;line-height:1.12;letter-spacing:-.01em;
+    margin:0 0 18px;max-width:640px;
+  }
+  .hero-sub{
+    font-size:17px;color:#B7C0CE;max-width:560px;margin:0 0 30px;
+  }
+  .meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:0;}
+  .chip{
+    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+    padding:8px 14px;border-radius:999px;font-size:13.5px;color:#EAF0F5;
+    display:flex;align-items:center;gap:7px;
+  }
+  .chip svg{opacity:.8;flex-shrink:0;}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+  .btn-primary{
+    background:var(--teal);color:#04231F;font-weight:700;font-size:15px;
+    padding:14px 26px;border-radius:10px;text-decoration:none;
+    box-shadow:0 8px 24px rgba(20,184,166,.25);
+  }
+  .btn-ghost{
+    color:#fff;font-weight:600;font-size:14.5px;text-decoration:none;
+    display:flex;align-items:center;gap:6px;opacity:.85;
+  }
+  .hero-tri-a{border-left:220px solid transparent;border-bottom:260px solid rgba(20,184,166,.10);top:-40px;right:-60px;}
+  .hero-tri-b{border-left:140px solid transparent;border-bottom:170px solid rgba(255,255,255,.06);bottom:-30px;right:120px;}
+
+  /* SECTION SHELL */
+  section{padding:44px 0;}
+  section.alt{background:var(--panel);}
+  .eyebrow{
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--teal-deep);font-weight:700;margin:0 0 12px;
+  }
+  h2{font-size:28px;font-weight:800;letter-spacing:-.01em;margin:0 0 14px;color:var(--navy);}
+  p.lead{font-size:16.5px;color:var(--muted);max-width:680px;margin:0 0 28px;}
+  p.lead + p.lead{margin-top:-12px;}
+
+  /* ABOUT / STATS */
+  .stat-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px;
+  }
+  .stat{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px 18px;text-align:left;
+  }
+  section.alt .stat{background:#fff;}
+  .stat .num{font-size:24px;font-weight:800;color:var(--navy);}
+  .stat .num.sm{font-size:17px;line-height:1.35;}
+  .stat .label{font-size:12.5px;color:var(--muted);margin-top:4px;letter-spacing:.01em;}
+  .investors{margin-top:26px;font-size:13.5px;color:var(--muted);}
+  .investors b{color:var(--ink);font-weight:600;}
+  .investors a{color:var(--teal-deep);font-weight:600;text-decoration:none;}
+
+  /* CARD LISTS */
+  .card-list{display:grid;gap:12px;margin-top:26px;}
+  .item-card{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px 20px;display:flex;gap:14px;align-items:flex-start;
+  }
+  section.alt .item-card{background:#fff;}
+  .item-card .mark{
+    flex-shrink:0;width:26px;height:26px;border-radius:8px;
+    background:rgba(20,184,166,.12);color:var(--teal-deep);
+    display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;
+    margin-top:1px;
+  }
+  .item-card p{margin:0;font-size:15px;color:var(--ink);}
+  .item-card p b{font-weight:700;color:var(--navy);}
+
+  /* TWO COLUMN REQS */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px;}
+  .req-panel{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:24px;
+  }
+  section.alt .req-panel{background:#fff;}
+  .req-panel h3{
+    font-size:14px;text-transform:uppercase;letter-spacing:.08em;
+    margin:0 0 16px;color:var(--navy);display:flex;align-items:center;gap:8px;
+  }
+  .req-panel h3 .tick{color:var(--teal-deep);}
+  .req-panel ul{margin:0;padding:0;list-style:none;}
+  .req-panel li{
+    font-size:14.5px;color:var(--ink);padding:10px 0;border-top:1px solid var(--line);
+  }
+  .req-panel li:first-child{border-top:none;padding-top:0;}
+
+  /* COMP STRIP */
+  .comp-strip{
+    background:var(--navy);color:#fff;border-radius:20px;padding:40px 36px;
+    margin-top:8px;position:relative;overflow:hidden;
+  }
+  .comp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative;z-index:2;}
+  .comp-grid .comp-item .num{font-size:22px;font-weight:800;color:var(--teal);}
+  .comp-grid .comp-item .label{font-size:13px;color:#C6CEDA;margin-top:6px;}
+
+  /* FINAL CTA */
+  .final-cta{
+    text-align:center;padding:56px 0;
+  }
+  .final-cta h2{font-size:32px;}
+  .final-cta p.lead{margin-left:auto;margin-right:auto;}
+  .recruiter{margin-top:28px;font-size:14px;color:var(--muted);}
+  .recruiter b{color:var(--navy);}
+  .recruiter a{color:var(--teal-deep);text-decoration:none;font-weight:600;}
+
+  footer{
+    border-top:1px solid var(--line);padding:32px 0;background:var(--panel);
+  }
+  .foot-inner{
+    max-width:960px;margin:0 auto;padding:0 28px;
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+  }
+  .foot-brand{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--navy);font-size:14px;}
+  .foot-links{display:flex;gap:20px;font-size:13.5px;color:var(--muted);}
+  .foot-links a{text-decoration:none;color:var(--muted);}
+  .foot-links a:hover{color:var(--navy);}
+
+  @media (max-width:720px){
+    h1.role{font-size:32px;}
+    .stat-grid{grid-template-columns:repeat(2,1fr);}
+    .two-col{grid-template-columns:1fr;}
+    .comp-grid{grid-template-columns:repeat(2,1fr);}
+    section{padding:34px 0;}
+    .tag-pill{display:none;}
+  }
+  .leader-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:4px;}
+  .leader{display:block;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;text-decoration:none;}
+  .leader:hover{border-color:var(--teal);}
+  .leader .name{font-weight:800;color:var(--navy);font-size:16px;}
+  .leader .title{font-size:13.5px;color:var(--muted);margin-top:2px;}
+  .leader .li{font-size:13px;color:var(--teal-deep);font-weight:600;margin-top:10px;}
+  @media (max-width:720px){.leader-grid{grid-template-columns:1fr;}}
+  .kw{margin:0 0 28px;max-width:760px;display:grid;gap:8px;}
+  .kw-row{display:grid;grid-template-columns:170px 1fr;gap:12px;align-items:baseline;font-size:14.5px;color:#C9D1DC;line-height:1.5;}
+  .kw-label{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#8FF0E4;font-weight:700;}
+  @media (max-width:720px){.kw-row{grid-template-columns:1fr;gap:2px;}}
+  .fn-line{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8FF0E4;font-weight:700;margin:-4px 0 28px;}
+  .own-list{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:10px;}
+  .own-list li{position:relative;padding-left:20px;font-size:15.5px;color:var(--ink);}
+  .own-list li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--teal);}
+  .own-list b{color:var(--navy);}
+  .inline-link{color:var(--teal-deep);font-weight:600;text-decoration:none;}
+  .inline-link:hover{text-decoration:underline;}
+  .own-list b .inline-link{font-weight:700;}
+  .steps{margin:14px 0 0;padding:0;list-style:none;counter-reset:st;display:grid;gap:12px;}
+  .steps li{counter-increment:st;position:relative;padding-left:40px;font-size:15.5px;color:var(--ink);line-height:1.55;}
+  .steps li::before{content:counter(st);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:8px;background:rgba(20,184,166,.12);color:var(--teal-deep);font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .steps b{color:var(--navy);}
+  .hero-links{display:flex;gap:22px;margin-top:22px;}
+  .hero-links a{color:#8FF0E4;font-weight:600;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:5px;}
+  .hero-links a:hover{text-decoration:underline;}
+  .sub-list{list-style:none;margin:8px 0 0;padding:0;}
+  .sub-list li{position:relative;padding-left:18px;font-size:15px;color:var(--ink);}
+  .sub-list li::before{content:"";position:absolute;left:2px;top:.7em;width:8px;height:2px;background:var(--teal);}
+  .sub-links,.sub-title{margin:-6px 0 18px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--teal-deep);}
+  .sub-links a{color:var(--teal-deep);text-decoration:none;}
+  .sub-links a:hover{text-decoration:underline;}
+  .sub-links span,.sub-title span{margin:0 10px;color:var(--muted);font-weight:400;}
+  .h2-sep{color:var(--teal);font-weight:400;margin:0 4px;}
+  .sub-title span{margin:0 8px;}
+  .stack-line{margin:-4px 0 18px;font-size:14px;font-weight:600;color:var(--teal-deep);letter-spacing:0;}
+  .stack-line span{margin:0 5px;color:var(--muted);font-weight:400;}
+  .facts{display:grid;grid-template-columns:170px 1fr;gap:10px 16px;margin:4px 0 24px;padding:18px 20px;border-left:3px solid var(--teal);background:rgba(20,184,166,.06);border-radius:0 10px 10px 0;}
+  .facts dt{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--teal-deep);padding-top:3px;}
+  .facts dd{margin:0;font-size:15px;color:var(--ink);}
+  @media (max-width:720px){.facts{grid-template-columns:1fr;gap:2px;}.facts dd{margin-bottom:10px;}}
+  .recruiter a.recruiter-name{color:var(--navy);font-weight:700;text-decoration:underline;text-decoration-color:var(--teal);text-underline-offset:3px;}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <svg width="20" height="20" viewBox="0 0 20 20"><polygon points="10,1 19,18 1,18" fill="#14B8A6"/></svg>
+      H2 CORPORATION
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="tri hero-tri-a"></span>
+  <span class="tri hero-tri-b"></span>
+  <div class="wrap">
+    <h1 class="role">Frontend Engineer</h1>
+    <div class="fn-line">Frontend Forward Deployment Engineer (FDE)</div>
+    <div class="meta-row">
+      <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8FF0E4" stroke-width="2"><path d="M4 20h4V12H4zM10 20h4V8h-4zM16 20h4V4h-4z"/></svg>Senior · Staff · Principal</span>
+      <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8FF0E4" stroke-width="2"><path d="M12 21s-7-6.4-7-12a7 7 0 0 1 14 0c0 5.6-7 12-7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>Hybrid in San Francisco or New York City (1–3 days/week)</span>
+      <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8FF0E4" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>$200K–$350K base + annual cash bonus + equity</span>
+      <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8FF0E4" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Reports to VP of Engineering</span>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>About H2</h2>
+    <div class="sub-links"><a href="https://www.getaisp.com/" target="_blank" rel="noopener">Website</a><span>|</span><a href="https://www.linkedin.com/company/h2-corporation/home/" target="_blank" rel="noopener">LinkedIn</a></div>
+    <p class="lead">H2 builds an AI-powered system of record for quoting and orders in construction, a $13T global industry. Its AIS Platform automates takeoff, estimating, quoting and orders for the largest construction enterprises, helping the industry cope with a generational labor shortage.</p>
+    <ul class="own-list">
+      <li><b>Origin.</b> Founded in Tokyo in 2020 and now the #1 AI construction platform in Asia, with an established customer base in Japan.</li>
+      <li><b>US expansion.</b> Enterprise customers already in deployment, with a sales pipeline covering roughly the next 12 months.</li>
+      <li><b>Traction.</b> Highly capital-efficient, with enterprise contracts reaching seven figures.</li>
+      <li><b>Growth.</b> ARR grew 400% in 2024 and 500% in 2025, with 400% projected for 2026.</li>
+      <li><b>Revenue.</b> Profitable, with ARR in the double-digit millions.</li>
+      <li><b>Funding.</b> Raised a $4M seed, then an extension to the <a class="inline-link" href="https://www.getaisp.com/news/h2corporation-raises-pre-series-a-extension-from-nea" target="_blank" rel="noopener">pre-Series A led by NEA in December 2025</a>. We're now in the final stages of raising our Series A from Tier-1 VCs to fund our US expansion.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="role">
+  <div class="wrap">
+    <h2>The Role: Frontend Engineer <span class="h2-sep">|</span> Frontend FDE</h2>
+    <dl class="facts">
+      <dt>Frontend Stack</dt><dd>TypeScript, React.js, Next.js, Vite.js, Canvas, WebGL, SVG</dd>
+      <dt>Experience Levels</dt><dd>Senior, Staff, Principal</dd>
+      <dt>Reports To</dt><dd>VP of Engineering</dd>
+      <dt>Comp Package</dt><dd>$200K–$350K base, annual cash bonus, equity</dd>
+      <dt>Benefits</dt><dd>Health, 401(k), flexible hours, unlimited PTO, personal development stipend + more</dd>
+    </dl>
+    <p class="lead">You'll build and own features from 0 to 1, both within the scope of each new customer deployment and to elevate the experience for the end user. Much of that work lives in Origami, the custom canvas we're building in-house, where construction estimators review thousands of machine-detected objects on a drawing and turn them into a bid.</p>
+    <p class="lead">You'd help set frontend architecture and standards on an early codebase. About 5–15% of your time is spent with customers, and the role requires no travel.</p>
+
+    <p class="eyebrow" style="margin-top:32px;">What You'll Own</p>
+    <ul class="own-list">
+      <li><b>Origami, our in-house canvas.</b> Rendering, hit-testing, selection, editing and annotation at scale.</li>
+      <li><b>Customer deployments.</b> 0-to-1 features scoped to each new enterprise rollout.</li>
+      <li><b>Frontend architecture.</b> State model, component boundaries, type safety and testing.</li>
+      <li><b>Performance.</b> Frame budget, memory and load time on large drawings.</li>
+      <li><b>The AI review loop.</b> How users trust, correct and commit what the model produced.</li>
+      <li><b>Rapid prototyping.</b> Ideas in front of real estimators in days.</li>
+      <li><b>The quality bar.</b> Code review, documentation and standards for a growing team.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>What We're Looking For</h2>
+    <p class="eyebrow" style="margin-top:8px;">Required</p>
+    <ul class="own-list">
+      <li>5+ years of software engineering, shipping production-grade code.</li>
+      <li>4+ years of frontend engineering, fluent in TypeScript.</li>
+      <li>Experience building frontend applications in Next.js or Vite.js (both is ideal).</li>
+      <li>A track record of building and owning complex features end to end.</li>
+    </ul>
+    <p class="eyebrow" style="margin-top:32px;">Bonus Points</p>
+    <ul class="own-list">
+      <li>Experience building canvas-like applications, from scratch or on top of libraries like tldraw, Konva, PixiJS or Three.js.</li>
+      <li>Experience with WebGL and SVG.</li>
+      <li>Document-heavy or annotation products such as PDF viewers, whiteboards, mapping or CAD/BIM.</li>
+      <li>Construction tech, CPQ/ERP or geospatial exposure.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Interview Process</h2>
+    <ol class="steps">
+      <li><b>Intro interview.</b> 45 minutes with our VP of Product.</li>
+      <li><b>Take-home assessment.</b> Sign an NDA, then three days to complete.</li>
+      <li><b>Live technical interview.</b> 90 minutes covering an assessment review, pair programming and system design.</li>
+      <li><b>Final round with the CEO.</b> 30–45 minutes.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="final-cta alt" id="apply">
+  <div class="wrap">
+    <p class="eyebrow" style="text-align:center;">Ready to build?</p>
+    <h2>Build the canvas at H2 Corporation.</h2>
+    <p class="lead">If you want to own the hardest frontend problem in construction tech — and set the standards for the team that grows around it — we'd like to talk.</p>
+    <a class="btn-primary" href="https://calendly.com/kyle-15min-intro-call/h2-intro-call" target="_blank" rel="noopener" style="display:inline-block;">Book a 15-minute intro →</a>
+    <div class="recruiter"><a class="recruiter-name" href="https://www.linkedin.com/in/kylebedore/" target="_blank" rel="noopener">Kyle Bedore</a>, Talent Acquisition — H2 Corporation<br><a href="mailto:kyle.bedore@h2corporation.jp?subject=Frontend%20Engineer">kyle.bedore@h2corporation.jp</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <svg width="16" height="16" viewBox="0 0 20 20"><polygon points="10,1 19,18 1,18" fill="#0D9488"/></svg>
+      H2 Corporation
+    </div>
+    <div class="foot-links">
+      <a href="https://h2corporation.co.jp/" target="_blank" rel="noopener">h2corporation.co.jp</a>
+      <a href="https://www.linkedin.com/company/h2-corporation" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

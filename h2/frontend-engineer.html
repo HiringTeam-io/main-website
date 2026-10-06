@@ -236,6 +236,15 @@
   .facts dd{margin:0;font-size:15px;color:var(--ink);}
   @media (max-width:720px){.facts{grid-template-columns:1fr;gap:2px;}.facts dd{margin-bottom:10px;}}
   .recruiter a.recruiter-name{color:var(--navy);font-weight:700;text-decoration:underline;text-decoration-color:var(--teal);text-underline-offset:3px;}
+  .facts .dd-note{display:block;font-size:13px;color:var(--muted);margin-top:2px;}
+  .leaders{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:8px;}
+  .ldr{display:flex;gap:14px;align-items:flex-start;}
+  .av{flex-shrink:0;width:44px;height:44px;border-radius:50%;background:var(--navy);color:#8FF0E4;font-weight:800;font-size:14px;letter-spacing:.04em;display:flex;align-items:center;justify-content:center;}
+  .ldr-name{font-weight:800;color:var(--navy);font-size:16px;}
+  .ldr-name span{font-weight:700;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-deep);margin-left:8px;}
+  .ldr p{margin:4px 0 6px;font-size:14.5px;color:var(--muted);line-height:1.55;}
+  .ldr .inline-link{font-size:13.5px;}
+  @media (max-width:720px){.leaders{grid-template-columns:1fr;gap:20px;}}
 </style>
 </head>
 <body>
@@ -256,7 +265,7 @@
     <h1 class="role">Frontend Engineer</h1>
     <div class="fn-line">Frontend Forward Deployment Engineer (FDE)</div>
     <div class="meta-row">
-      <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8FF0E4" stroke-width="2"><path d="M4 20h4V12H4zM10 20h4V8h-4zM16 20h4V4h-4z"/></svg>Senior · Staff · Principal</span>
+      <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8FF0E4" stroke-width="2"><path d="M4 20h4V12H4zM10 20h4V8h-4zM16 20h4V4h-4z"/></svg>Experience Levels: Senior · Staff · Principal</span>
       <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8FF0E4" stroke-width="2"><path d="M12 21s-7-6.4-7-12a7 7 0 0 1 14 0c0 5.6-7 12-7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>Hybrid in San Francisco or New York City (1–3 days/week)</span>
       <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8FF0E4" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>$200K–$350K base + annual cash bonus + equity</span>
       <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8FF0E4" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Reports to VP of Engineering</span>
@@ -267,16 +276,35 @@
 <section class="alt">
   <div class="wrap">
     <h2>About H2</h2>
-    <div class="sub-links"><a href="https://www.getaisp.com/" target="_blank" rel="noopener">Website</a><span>|</span><a href="https://www.linkedin.com/company/h2-corporation/home/" target="_blank" rel="noopener">LinkedIn</a></div>
-    <p class="lead">H2 builds an AI-powered system of record for quoting and orders in construction, a $13T global industry. Its AIS Platform automates takeoff, estimating, quoting and orders for the largest construction enterprises, helping the industry cope with a generational labor shortage.</p>
+    <div class="sub-links"><a href="https://www.getaisp.com/" target="_blank" rel="noopener">Website</a><span>|</span><a href="https://www.linkedin.com/company/h2-corporation/home/" target="_blank" rel="noopener">LinkedIn</a><span>|</span><a href="https://www.getaisp.com/careers" target="_blank" rel="noopener">Careers</a></div>
+    <p class="lead">H2 builds the AI-native system of record for construction, a $13T global industry that still bids work by hand. Our Computer Vision platform (AISP) reads the drawings and automates takeoff, estimating, quoting and orders for the largest construction enterprises, letting a shrinking pool of estimators cover far more work than they could before.</p>
     <ul class="own-list">
-      <li><b>Origin.</b> Founded in Tokyo in 2020 and now the #1 AI construction platform in Asia, with an established customer base in Japan.</li>
-      <li><b>US expansion.</b> Enterprise customers already in deployment, with a sales pipeline covering roughly the next 12 months.</li>
+      <li><b>Origin.</b> Founded in Tokyo in 2020 and now the #1 AI construction platform in Asia, now expanding globally with customers in Australia and the United States.</li>
+      <li><b>US expansion.</b> Enterprise customers already in deployment (including the US's largest window manufacturer), with a sales pipeline covering roughly the next 12 months.</li>
       <li><b>Traction.</b> Highly capital-efficient, with enterprise contracts reaching seven figures.</li>
-      <li><b>Growth.</b> ARR grew 400% in 2024 and 500% in 2025, with 400% projected for 2026.</li>
-      <li><b>Revenue.</b> Profitable, with ARR in the double-digit millions.</li>
-      <li><b>Funding.</b> Raised a $4M seed, then an extension to the <a class="inline-link" href="https://www.getaisp.com/news/h2corporation-raises-pre-series-a-extension-from-nea" target="_blank" rel="noopener">pre-Series A led by NEA in December 2025</a>. We're now in the final stages of raising our Series A from Tier-1 VCs to fund our US expansion.</li>
+      <li><b>Growth.</b> 400% in 2024, 500% in 2025, and 400% projected for 2026.</li>
+      <li><b>Revenue.</b> Our ARR today is in the double-digit millions and we're already profitable.</li>
+      <li><b>Funding.</b> Following an <a class="inline-link" href="https://www.getaisp.com/news/h2corporation-raises-pre-series-a-extension-from-nea" target="_blank" rel="noopener">NEA-led pre-Series A extension in December 2025</a>, H2 is currently raising a Series A from Tier-1 VCs to support US expansion and continued product development.</li>
     </ul>
+    <p class="eyebrow" style="margin-top:32px;">Leadership</p>
+    <div class="leaders">
+      <div class="ldr">
+        <div class="av">HK</div>
+        <div>
+          <div class="ldr-name">Hiro Kawashima <span>CEO</span></div>
+          <p>Former CEO of Prescience Health (acquired 2020) and CPO building hospital-management SaaS &amp; AI. Returned to Japan to his family's 119-year-old MEP business; executive advisor to Daikin, Hulic &amp; Maeda.</p>
+          <a class="inline-link" href="https://www.linkedin.com/in/hirokawashima/" target="_blank" rel="noopener">LinkedIn →</a>
+        </div>
+      </div>
+      <div class="ldr">
+        <div class="av">TN</div>
+        <div>
+          <div class="ldr-name">Tung Nguyen <span>CTO</span></div>
+          <p>Built Android OS systems before joining LINE's CLOVA smart-speaker team — leading NLP, distributed-learning infrastructure, and Japanese LLM R&amp;D. Believes in vertical AI for industries like construction.</p>
+          <a class="inline-link" href="https://www.linkedin.com/in/nguyen-vu-thanh-tung-a6332a6b/" target="_blank" rel="noopener">LinkedIn →</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -284,11 +312,12 @@
   <div class="wrap">
     <h2>The Role: Frontend Engineer <span class="h2-sep">|</span> Frontend FDE</h2>
     <dl class="facts">
+      <dt>Team Locations</dt><dd>New York City, San Francisco, Remote<span class="dd-note">Hybrid model, 1–3 days per week in office</span></dd>
+      <dt>US Engineering Team (13)</dt><dd>Recent hires bring experience from GitHub, Google, AWS, Microsoft, Meta, and AI startups backed by Accel, a16z, Insight Partners, and NEA.</dd>
       <dt>Frontend Stack</dt><dd>TypeScript, React.js, Next.js, Vite.js, Canvas, WebGL, SVG</dd>
       <dt>Experience Levels</dt><dd>Senior, Staff, Principal</dd>
       <dt>Reports To</dt><dd>VP of Engineering</dd>
-      <dt>Comp Package</dt><dd>$200K–$350K base, annual cash bonus, equity</dd>
-      <dt>Benefits</dt><dd>Health, 401(k), flexible hours, unlimited PTO, personal development stipend + more</dd>
+      <dt>Comp &amp; Benefits</dt><dd>$200K–$350K base, annual cash bonus, equity, health, 401(k), flexible hours, unlimited PTO, personal development stipend + more</dd>
     </dl>
     <p class="lead">You'll build and own features from 0 to 1, both within the scope of each new customer deployment and to elevate the experience for the end user. Much of that work lives in Origami, the custom canvas we're building in-house, where construction estimators review thousands of machine-detected objects on a drawing and turn them into a bid.</p>
     <p class="lead">You'd help set frontend architecture and standards on an early codebase. About 5–15% of your time is spent with customers, and the role requires no travel.</p>
